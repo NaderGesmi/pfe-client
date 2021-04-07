@@ -15,7 +15,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React,{useState, useEffect} from "react";
 import { useLocation, Route, Switch, Redirect } from "react-router-dom";
 // reactstrap components
 import { Container } from "reactstrap";
@@ -25,16 +25,60 @@ import AdminFooter from "components/Footers/AdminFooter.js";
 import Sidebar from "components/Sidebar/Sidebar.js";
 
 import routes from "routes.js";
+import axios from "axios";
+
 
 const Admin = (props) => {
   const mainContent = React.useRef(null);
   const location = useLocation();
 
+  const [user, setUser] = useState(true);
+
   React.useEffect(() => {
+    getUser();
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
-    mainContent.current.scrollTop = 0;
+    //mainContent.current.scrollTop = 0;
   }, [location]);
+
+
+
+async function getUser(){
+
+  try {
+  
+    await axios.get('http://localhost:5000/user/user',  {
+      headers: {
+        'Content-Type': 'Application/json'
+      },
+      withCredentials: true
+    }).then( (res)=>{
+
+   var result = res.data;
+   console.log(result);
+    if(res.data.hasOwnProperty('_id')){
+      console.log('rahi mawjooda');
+      setUser(true);
+    }else{
+      console.log('rahi false');
+
+      setUser(false);
+    }
+
+  }).catch(error =>{
+    setUser(false);
+    alert(`error:: ${error}`);
+  })
+
+  } catch (error) {
+  console(`erroer user:: ${error}`);  
+  setUser(false)
+
+  }
+
+  
+}
+
 
   const getRoutes = (routes) => {
     return routes.map((prop, key) => {
@@ -63,6 +107,12 @@ const Admin = (props) => {
     }
     return "Brand";
   };
+
+
+if(!user){
+console.log(user);
+  return <Redirect to='/singin'/>
+}
 
   return (
     <>

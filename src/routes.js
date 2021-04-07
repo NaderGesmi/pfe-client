@@ -17,12 +17,10 @@
 */
 import Index from "views/Index.js";
 import Profile from "views/examples/Profile.js";
-import Maps from "views/examples/Maps.js";
 import Register from "views/examples/Register.js";
 import Login from "views/examples/Login.js";
 import Tables from "views/examples/Tables.js";
-import Icons from "views/examples/Icons.js";
-
+import Demandes from "views/examples/Demandes";
 var routes = [
   {
     path: "/index",
@@ -31,20 +29,15 @@ var routes = [
     component: Index,
     layout: "/admin",
   },
+
   {
-    path: "/icons",
-    name: "Icons",
+    path: "/demandes",
+    name: "Demandes",
     icon: "ni ni-planet text-blue",
-    component: Icons,
+    component: Demandes,
     layout: "/admin",
   },
-  {
-    path: "/maps",
-    name: "Maps",
-    icon: "ni ni-pin-3 text-orange",
-    component: Maps,
-    layout: "/admin",
-  },
+ 
   {
     path: "/user-profile",
     name: "User Profile",
@@ -74,4 +67,28 @@ var routes = [
     layout: "/auth",
   },
 ];
+
+export const others = [  {
+  path: "/register",
+  name: "Register",
+  icon: "ni ni-circle-08 text-pink",
+  component: Register,
+  layout: "/auth",
+},
+{
+  path: "/register",
+  name: "Register",
+  icon: "ni ni-circle-08 text-pink",
+  component: Register,
+  layout: "/auth",
+},
+{
+  path: "/register",
+  name: "Register",
+  icon: "ni ni-circle-08 text-pink",
+  component: Register,
+  layout: "/auth",
+},]
+
+
 export default routes;

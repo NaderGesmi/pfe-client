@@ -15,8 +15,9 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import React, {useState} from "react";
+import { Link, Redirect } from "react-router-dom";
 // reactstrap components
 import {
   DropdownMenu,
@@ -33,9 +34,37 @@ import {
   Nav,
   Container,
   Media,
+  Button
 } from "reactstrap";
 
+import Cookies from 'js-cookie';
+
+
 const AdminNavbar = (props) => {
+
+  const [login, setLogin] = useState(true)
+
+async function logout(){
+  console.log('btn clocked');
+
+   await axios.post('http://localhost:5000/user/logout',  {
+     headers: {
+       'Content-Type': 'Application/json'
+     },
+     withCredentials: true
+   }).then(res =>{
+     console.log('logout');
+     Cookies.remove('jwt');
+     setLogin(false);
+   }
+     ).catch(error => alert(`error :${error}`)); 
+}
+
+
+
+if (!login) return window.location.pathname = '/singin';
+
+
   return (
     <>
       <Navbar className="navbar-top navbar-dark" expand="md" id="navbar-main">
@@ -99,9 +128,9 @@ const AdminNavbar = (props) => {
                   <span>Support</span>
                 </DropdownItem>
                 <DropdownItem divider />
-                <DropdownItem href="#pablo" onClick={(e) => e.preventDefault()}>
+                <DropdownItem href="#pablo" onClick={(e) => {e.preventDefault(); logout()}}>
                   <i className="ni ni-user-run" />
-                  <span>Logout</span>
+                  <span onClick={console.log('hi')}>Logout</span>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>

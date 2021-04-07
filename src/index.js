@@ -25,13 +25,20 @@ import "assets/scss/argon-dashboard-react.scss";
 
 import AdminLayout from "layouts/Admin.js";
 import AuthLayout from "layouts/Auth.js";
+import Home from './src/pages'
+import SinginPage from './src/pages/singin'
+import DemandeForm from './src/demandeForm'
+
 
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
+    <Route path="/home" component={Home} exact />
+        <Route path="/singin" component={SinginPage} exact />
+        <Route path="/demande" component={DemandeForm} exact />
       <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
       <Route path="/auth" render={(props) => <AuthLayout {...props} />} />
-      <Redirect from="/" to="/admin/index" />
+      <Redirect from="/" to="/home" />
     </Switch>
   </BrowserRouter>,
   document.getElementById("root")
