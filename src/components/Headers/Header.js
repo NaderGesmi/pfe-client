@@ -24,7 +24,7 @@ const Header = () => {
   return (
     <>
       <div className="header bg-gradient-info pb-8 pt-5 pt-md-8 ">
-        <Container fluid>
+        <Container fluid className='mt-7'>
           <div className="header-body">
             {/* Card stats */}
             <Row>
