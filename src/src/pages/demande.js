@@ -1,9 +1,9 @@
 import React from 'react'
-import DemandeForm from '../components/demandeForm';
+import DemandeForm from '../components/demandeForm.js';
 const demande = () => {
     return (
         <>
-            <DemandeForm/>
+            <DemandeForm />
         </>
     )
 }

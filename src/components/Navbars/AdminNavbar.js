@@ -16,7 +16,7 @@
 
 */
 import axios from "axios";
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 // reactstrap components
 import {
@@ -44,25 +44,25 @@ const AdminNavbar = (props) => {
 
   const [login, setLogin] = useState(true)
 
-async function logout(){
-  console.log('btn clocked');
+  async function logout() {
+    console.log('btn clocked');
 
-   await axios.post('http://localhost:5000/user/logout',  {
-     headers: {
-       'Content-Type': 'Application/json'
-     },
-     withCredentials: true
-   }).then(res =>{
-     console.log('logout');
-     Cookies.remove('jwt');
-     setLogin(false);
-   }
-     ).catch(error => alert(`error :${error}`)); 
-}
+    await axios.get('http://localhost:5000/user/logout', {
+      headers: {
+        'Content-Type': 'Application/json'
+      },
+      withCredentials: true
+    }).then(res => {
+      console.log('logout');
+      // Cookies.remove('jwt');
+      setLogin(false);
+    }
+    ).catch(error => alert(`error :${error}`));
+  }
 
 
 
-if (!login) return window.location.pathname = '/singin';
+  if (!login) return window.location.pathname = '/singin';
 
 
   return (
@@ -128,7 +128,7 @@ if (!login) return window.location.pathname = '/singin';
                   <span>Support</span>
                 </DropdownItem>
                 <DropdownItem divider />
-                <DropdownItem href="#pablo" onClick={(e) => {e.preventDefault(); logout()}}>
+                <DropdownItem href="#pablo" onClick={(e) => { e.preventDefault(); logout() }}>
                   <i className="ni ni-user-run" />
                   <span onClick={console.log('hi')}>Logout</span>
                 </DropdownItem>

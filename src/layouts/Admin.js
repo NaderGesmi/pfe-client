@@ -15,7 +15,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React,{useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, Route, Switch, Redirect } from "react-router-dom";
 // reactstrap components
 import { Container } from "reactstrap";
@@ -43,41 +43,41 @@ const Admin = (props) => {
 
 
 
-async function getUser(){
+  async function getUser() {
 
-  try {
-  
-    await axios.get('http://localhost:5000/user/user',  {
-      headers: {
-        'Content-Type': 'Application/json'
-      },
-      withCredentials: true
-    }).then( (res)=>{
+    try {
 
-   var result = res.data;
-   console.log(result);
-    if(res.data.hasOwnProperty('_id')){
-      console.log('rahi mawjooda');
-      setUser(true);
-    }else{
-      console.log('rahi false');
+      await axios.get('http://localhost:5000/user/user', {
+        headers: {
+          'Content-Type': 'Application/json'
+        },
+        withCredentials: true
+      }).then((res) => {
 
-      setUser(false);
+        var result = res.data;
+        console.log(result);
+        if (res.data.hasOwnProperty('_id')) {
+          console.log('rahi mawjooda');
+          setUser(true);
+        } else {
+          console.log('rahi false');
+
+          setUser(false);
+        }
+
+      }).catch(error => {
+        setUser(false);
+        alert(`error:: ${error}`);
+      })
+
+    } catch (error) {
+      console(`erroer user:: ${error}`);
+      setUser(false)
+
     }
 
-  }).catch(error =>{
-    setUser(false);
-    alert(`error:: ${error}`);
-  })
-
-  } catch (error) {
-  console(`erroer user:: ${error}`);  
-  setUser(false)
 
   }
-
-  
-}
 
 
   const getRoutes = (routes) => {
@@ -109,10 +109,10 @@ async function getUser(){
   };
 
 
-if(!user){
-console.log(user);
-  return <Redirect to='/singin'/>
-}
+  if (!user) {
+    console.log(user);
+    return <Redirect to='/singin' />
+  }
 
   return (
     <>
@@ -130,11 +130,14 @@ console.log(user);
           {...props}
           brandText={getBrandText(props.location.pathname)}
         />
-        <Switch>
+
+
+        <Switch >
           {getRoutes(routes)}
+
           <Redirect from="*" to="/admin/index" />
         </Switch>
-        <Container fluid>
+        <Container fluid >
           <AdminFooter />
         </Container>
       </div>
