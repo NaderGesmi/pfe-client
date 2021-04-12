@@ -47,7 +47,7 @@ const Admin = (props) => {
 
     try {
 
-      await axios.get('http://localhost:5000/user/user', {
+      await axios.get('https://pfe-cims.herokuapp.com/user/user', {
         headers: {
           'Content-Type': 'Application/json'
         },

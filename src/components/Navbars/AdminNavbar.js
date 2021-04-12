@@ -47,17 +47,17 @@ const AdminNavbar = (props) => {
   async function logout() {
     console.log('btn clocked');
 
-    await axios.get('http://localhost:5000/user/logout', {
-      headers: {
-        'Content-Type': 'Application/json'
-      },
-      withCredentials: true
-    }).then(res => {
-      console.log('logout');
-      // Cookies.remove('jwt');
-      setLogin(false);
-    }
-    ).catch(error => alert(`error :${error}`));
+    //   await axios.get('https://pfe-cims.herokuapp.com/user/logout', {
+    //     headers: {
+    //       'Content-Type': 'Application/json'
+    //     },
+    //     withCredentials: true
+    //   }).then(res => {
+    //     console.log('logout');
+    //     // Cookies.remove('jwt');
+    //     setLogin(false);
+    //   }
+    //   ).catch(error => alert(`error :${error}`));
   }
 
 
@@ -128,9 +128,11 @@ const AdminNavbar = (props) => {
                   <span>Support</span>
                 </DropdownItem>
                 <DropdownItem divider />
-                <DropdownItem href="#pablo" onClick={(e) => { e.preventDefault(); logout() }}>
+                <DropdownItem onClick={
+
+                  (e) => { e.preventDefault(); console.log('log'); }}>
                   <i className="ni ni-user-run" />
-                  <span onClick={console.log('hi')}>Logout</span>
+                  <span onClick={(e) => { e.preventDefault(); console.log('hi'); }}>Logout</span>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>

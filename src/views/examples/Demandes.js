@@ -55,7 +55,7 @@ const Demandes = () => {
 
   async function loadDemandes() {
 
-    var result = await axios.get('http://localhost:5000/request/');
+    var result = await axios.get('http://pfe-cims.herokuapp.com/request/');
 
     setDemandes(result.data);
 

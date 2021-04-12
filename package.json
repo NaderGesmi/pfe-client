@@ -9,7 +9,7 @@
   },
   "keywords": [
     "react",
-    "reactjs",
+    "reactjs",  
     "argon",
     "argon-react",
     "dashboard",
@@ -78,5 +78,7 @@
     "eslint-plugin-flowtype": "5.2.0",
     "jquery": "3.5.1",
     "typescript": "4.1.3"
-  }
+  },
+  "proxy": "https://pfe-cims.herokuapp.com/user/user"
+
 }

@@ -21,7 +21,7 @@ const SignIn = () => {
 
     try {
 
-      await axios.get('http://localhost:5000/user/user', {
+      await axios.get('https://pfe-cims.herokuapp.com/user/user', {
         headers: {
           'Content-Type': 'Application/json'
         },
@@ -32,6 +32,7 @@ const SignIn = () => {
         console.log(result);
         if (res.data.hasOwnProperty('_id')) {
           console.log('rahi mawjooda');
+          // return <Redirect to='/admin/index' />
           setredirect(true);
         } else {
           console.log('rahi false');
@@ -59,13 +60,14 @@ const SignIn = () => {
   async function submit(event) {
     event.preventDefault();
     try {
-      await axios.post('http://localhost:5000/user/login', formData, {
+      await axios.post('https://pfe-cims.herokuapp.com/user/login', formData, {
         headers: {
           'Content-Type': 'Application/json'
         },
         withCredentials: true
-      });
-      setredirect(true);
+      }).then(res => console.log(res));
+      // setredirect(true);
+      <Redirect to='/admin/index' />
       console.log('request 1');
       //  alert('Login Success');
       // <Redirect to='/admin/index'/>
