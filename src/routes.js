@@ -21,6 +21,15 @@ import Register from "views/examples/Register.js";
 import Login from "views/examples/Login.js";
 import Tables from "views/examples/Tables.js";
 import Demandes from "views/examples/Demandes";
+import Service from 'views/examples/personnels/Service'
+
+import Direction from 'views/examples/personnels/Direction';
+import Division from 'views/examples/personnels/Division'
+import Departement from 'views/examples/personnels/Department'
+
+import EditDep from 'components/forms/Departement'
+
+
 var routes = [
   {
     path: "/index",
@@ -35,6 +44,32 @@ var routes = [
     name: "Demandes",
     icon: "ni ni-planet text-blue",
     component: Demandes,
+    layout: "/admin",
+  },
+  {
+    path: "/Service",
+    name: "Service",
+    icon: "ni ni-planet text-blue",
+    component: Service,
+    layout: "/admin",
+  }, {
+    path: "/Direction",
+    name: "Direction",
+    icon: "ni ni-planet text-blue",
+    component: Direction,
+    layout: "/admin",
+  }, {
+    path: "/Division",
+    name: "Division",
+    icon: "ni ni-planet text-blue",
+    component: Division,
+    layout: "/admin",
+  },
+  {
+    path: "/Departement",
+    name: "Departement",
+    icon: "ni ni-planet text-blue",
+    component: Departement,
     layout: "/admin",
   },
  
@@ -69,10 +104,10 @@ var routes = [
 ];
 
 export const others = [  {
-  path: "/register",
-  name: "Register",
+  path: "/editDep",
+  name: "EditDep",
   icon: "ni ni-circle-08 text-pink",
-  component: Register,
+  component: EditDep,
   layout: "/auth",
 },
 {
@@ -88,7 +123,8 @@ export const others = [  {
   icon: "ni ni-circle-08 text-pink",
   component: Register,
   layout: "/auth",
-},]
+},
+]
 
 
 export default routes;

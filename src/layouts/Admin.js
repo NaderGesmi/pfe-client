@@ -26,7 +26,8 @@ import Sidebar from "components/Sidebar/Sidebar.js";
 
 import routes from "routes.js";
 import axios from "axios";
-
+import {others } from 'routes.js';
+import EditDep from 'components/forms/Departement'
 
 const Admin = (props) => {
   const mainContent = React.useRef(null);
@@ -96,6 +97,22 @@ const Admin = (props) => {
     });
   };
 
+  const getOtherRoutes = (routes) => {
+    return routes.map((prop, key) => {
+      if (prop.layout === "/admin") {
+        return (
+          <Route
+            path={prop.layout + prop.path}
+            component={prop.component}
+            key={key}
+          />
+        );
+      } else {
+        return null;
+      }
+    });
+  };
+
   const getBrandText = (path) => {
     for (let i = 0; i < routes.length; i++) {
       if (
@@ -134,6 +151,11 @@ const Admin = (props) => {
 
         <Switch >
           {getRoutes(routes)}
+          {getOtherRoutes(others)}
+<Route 
+path='/admin/editDep'
+component={EditDep}
+/>
 
           <Redirect from="*" to="/admin/index" />
         </Switch>
