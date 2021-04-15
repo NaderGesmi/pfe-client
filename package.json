@@ -22,7 +22,6 @@
   "bugs": {
     "url": "https://github.com/creativetimofficial/argon-dashboard-react/issues"
   },
-  "homepage": "https://demos.creative-tim.com/argon-dashboard-react/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -79,6 +78,6 @@
     "jquery": "3.5.1",
     "typescript": "4.1.3"
   },
-  "proxy": "https://pfe-cims.herokuapp.com/user/user"
+  "proxy": "https://pfe-cims.herokuapp.com/"
 
 }

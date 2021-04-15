@@ -13,7 +13,7 @@ function DemandeForm() {
     console.log(formData);
 
     try {
-      var result = await axios.post('http://pfe-cims.herokuapp.com/request/', formData);
+      var result = await axios.post('https://pfe-cims.herokuapp.com/request/', formData);
 
       alert('Success');
     } catch (error) {

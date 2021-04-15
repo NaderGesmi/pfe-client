@@ -30,7 +30,10 @@ const SignIn = () => {
 
         var result = res.data;
         console.log(result);
-        if (res.data.hasOwnProperty('_id')) {
+
+
+
+        if (result.auth) {
           console.log('rahi mawjooda');
           // return <Redirect to='/admin/index' />
           setredirect(true);
@@ -65,16 +68,22 @@ const SignIn = () => {
           'Content-Type': 'Application/json'
         },
         withCredentials: true
-      }).then(res => console.log(res));
-      // setredirect(true);
-      <Redirect to='/admin/index' />
+      }).then(res => {
+        console.log(res.status)
+        if (res.status == 404) {
+          console.log('Error 404');
+
+        }
+      });
+      setredirect(true);
+      // return <Redirect to='/admin/index' />
       console.log('request 1');
       //  alert('Login Success');
-      // <Redirect to='/admin/index'/>
+      // <Redirect to='/admin/index' />
     } catch (error) {
-      console.log(`request 0:  ${error}`);
+      // console.log(`request 0:  ${error}`);
 
-      //    alert(`Error :: ${error}`);
+      alert(`Error :: ${error.response.data.message}`);
     }
   }
 

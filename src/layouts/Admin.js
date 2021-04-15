@@ -15,7 +15,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useLocation, Route, Switch, Redirect } from "react-router-dom";
 // reactstrap components
 import { Container } from "reactstrap";
@@ -56,7 +56,7 @@ const Admin = (props) => {
 
         var result = res.data;
         console.log(result);
-        if (res.data.hasOwnProperty('_id')) {
+        if (res.data.auth) {
           console.log('rahi mawjooda');
           setUser(true);
         } else {

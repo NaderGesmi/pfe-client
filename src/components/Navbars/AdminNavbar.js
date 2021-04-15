@@ -17,7 +17,7 @@
 */
 import axios from "axios";
 import React, { useState } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 // reactstrap components
 import {
   DropdownMenu,
@@ -34,10 +34,10 @@ import {
   Nav,
   Container,
   Media,
-  Button
+
 } from "reactstrap";
 
-import Cookies from 'js-cookie';
+// import Cookies from 'js-cookie';
 
 
 const AdminNavbar = (props) => {
@@ -46,18 +46,18 @@ const AdminNavbar = (props) => {
 
   async function logout() {
     console.log('btn clocked');
-
-    //   await axios.get('https://pfe-cims.herokuapp.com/user/logout', {
-    //     headers: {
-    //       'Content-Type': 'Application/json'
-    //     },
-    //     withCredentials: true
-    //   }).then(res => {
-    //     console.log('logout');
-    //     // Cookies.remove('jwt');
-    //     setLogin(false);
-    //   }
-    //   ).catch(error => alert(`error :${error}`));
+    // alert('Hi there');
+    await axios.get('https://pfe-cims.herokuapp.com/user/logout', {
+      headers: {
+        'Content-Type': 'Application/json'
+      },
+      withCredentials: true
+    }).then(res => {
+      console.log(res.data);
+      // Cookies.remove('jwt');
+      setLogin(false);
+    }
+    ).catch(error => alert(`error :${error}`));
   }
 
 
@@ -130,7 +130,7 @@ const AdminNavbar = (props) => {
                 <DropdownItem divider />
                 <DropdownItem onClick={
 
-                  (e) => { e.preventDefault(); console.log('log'); }}>
+                  (e) => { e.preventDefault(); logout(); }}>
                   <i className="ni ni-user-run" />
                   <span onClick={(e) => { e.preventDefault(); console.log('hi'); }}>Logout</span>
                 </DropdownItem>
